@@ -90,6 +90,7 @@ int main()
 		push(s1,1,&stopword);
 	}
 	fclose(f1);
+	printf("\n");
 	// PrintBST(stopword);
 	int vitri = 0;
 	int xuongDong = 0;
