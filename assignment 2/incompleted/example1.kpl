@@ -1,0 +1,6 @@
+Program Example1; (* Example 1 *)
+Begin
+"du"
+1.5
+.5
+End. (* Example 1 *)
