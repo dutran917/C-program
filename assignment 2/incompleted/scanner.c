@@ -11,7 +11,6 @@
 #include "charcode.h"
 #include "token.h"
 #include "error.h"
-#include "scanner.h"
 
 
 extern int lineNo;
@@ -55,7 +54,7 @@ Token* readIdentKeyword(void) {
   readChar();
 
   while ((currentChar != EOF) && 
-   ((charCodes[currentChar] == CHAR_LETTER) || (charCodes[currentChar] == CHAR_DIGIT))) {
+	 ((charCodes[currentChar] == CHAR_LETTER) || (charCodes[currentChar] == CHAR_DIGIT))) {
     if (count <= MAX_IDENT_LEN) token->string[count++] = (char)currentChar;
     readChar();
   }
@@ -242,7 +241,6 @@ Token* getValidToken(void) {
   return token;
 }
 
-
 /******************************************************************/
 
 void printToken(Token *token) {
@@ -298,4 +296,31 @@ void printToken(Token *token) {
   case SB_RSEL: printf("SB_RSEL\n"); break;
   }
 }
-
+int scan(char *filename)
+{
+	Token *token;
+	if(openInputStream(filename) == IO_ERROR)
+		return IO_ERROR;
+	token = getToken();
+	while(token->tokenType != TK_EOF)
+	{
+		printToken(token);
+		free(token);
+		token = getToken();
+	}
+	free(token);
+	closeInputStream();
+	return IO_SUCCESS;
+}
+int main(int argc, char *argv[])
+{
+	if(argc<=1){
+		printf("scanner: no input file\n");
+		return -1;
+	}
+	if(scan(argv[1])==IO_ERROR){
+		printf("can't read file\n");
+		return -1;
+	}
+	return 0;
+}
