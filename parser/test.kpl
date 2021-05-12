@@ -1,0 +1,17 @@
+PROGRAM TEST;
+
+VAR	I : INTEGER;
+    A : STRING;
+    J : INTEGER;     
+BEGIN
+    A:= "HelloWorld";
+    I:= 5 % 4;
+    DO
+    BEGIN
+        J:= 5 + 3 % 2;
+        I:= 5 % 2;
+    END
+    DO I:= I+1
+    WHILE I>0;
+    WHILE J > 0;
+END.
