@@ -1,0 +1,13 @@
+Program Example2; 
+   
+Var a : Integer;
+	b : Integer;
+	c : Double;
+	X : String;
+	d : Double;
+Begin
+	c:= 1;
+	a,b:= 1,2,3;
+	c:= 1+1.5;
+	X:= "Hello Wolrd!";
+End. 
